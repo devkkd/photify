@@ -85,3 +85,32 @@ exports.deleteGalleryImage = async (req,res)=>{
     });
   }
 };
+
+// UPDATE ORDER
+exports.updateGalleryOrder = async (req, res) => {
+  try {
+    const { items } = req.body; // [{id, order}]
+
+    const bulkOps = items.map((item) => ({
+      updateOne: {
+        filter: { _id: item.id },
+        update: { order: item.order },
+      },
+    }));
+
+    await ServiceGallery.bulkWrite(bulkOps);
+
+    res.status(200).json({ message: "Order updated" });
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+exports.getAllServiceGallery = async (req, res) => {
+  try {
+    const images = await ServiceGallery.find().sort({ createdAt: -1 });
+    res.json(images);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

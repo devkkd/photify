@@ -5,12 +5,19 @@ const {
   createPackage,
   getPackages,
   updatePackage,
-  deletePackage
+  deletePackage,
+  reorderPackages
 } = require("../controllers/packageController");
 
-router.post("/", createPackage);
+const { verifyAdmin } = require("../middleware/authMiddleware"); // ✅
+
+// PUBLIC
 router.get("/", getPackages);
-router.put("/:id", updatePackage);
-router.delete("/:id", deletePackage);
+
+// PROTECTED
+router.post("/", verifyAdmin, createPackage);
+router.delete("/:id", verifyAdmin, deletePackage);
+router.put("/reorder", verifyAdmin, reorderPackages);
+router.put("/:id", verifyAdmin, updatePackage);
 
 module.exports = router;

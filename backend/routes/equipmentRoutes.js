@@ -7,8 +7,17 @@ const {
 } = require("../controllers/equipmentController");
 
 const upload = require("../middleware/upload");
+const { verifyAdmin } = require("../middleware/authMiddleware"); // ✅
 
-router.post("/", upload.single("image"), createEquipment);
+// PUBLIC
 router.get("/", getEquipments);
+
+// PROTECTED
+router.post(
+  "/",
+  verifyAdmin,
+  upload.single("image"),
+  createEquipment
+);
 
 module.exports = router;

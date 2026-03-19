@@ -93,9 +93,7 @@ const serviceSchema = new mongoose.Schema(
         },
         message: "Maximum 6 points allowed"
       }
-
     }
-
   }
 
 },

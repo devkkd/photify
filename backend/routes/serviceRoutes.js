@@ -5,24 +5,23 @@ const {
   getServices,
   getServiceBySlug,
   createService,
-  deleteService
+  deleteService,
+  updateService
 } = require("../controllers/serviceController");
 
 const upload = require("../middleware/upload");
+const { verifyAdmin } = require("../middleware/authMiddleware"); // ✅ ADD THIS
 
-
-
-// GET ALL SERVICES
+// ✅ PUBLIC ROUTES (keep open)
 router.get("/", getServices);
-
-
-// GET SERVICE BY SLUG
 router.get("/:slug", getServiceBySlug);
 
+// 🔐 PROTECTED ROUTES
 
 // CREATE SERVICE
 router.post(
   "/",
+  verifyAdmin, // ✅ PROTECT FIRST
   upload.fields([
     { name: "bannerImage", maxCount: 1 },
     { name: "specialImage", maxCount: 1 }
@@ -30,9 +29,22 @@ router.post(
   createService
 );
 
+// UPDATE SERVICE
+router.put(
+  "/:id",
+  verifyAdmin, // ✅ PROTECT
+  upload.fields([
+    { name: "bannerImage", maxCount: 1 },
+    { name: "specialImage", maxCount: 1 }
+  ]),
+  updateService
+);
 
 // DELETE SERVICE
-router.delete("/:id", deleteService);
-
+router.delete(
+  "/:id",
+  verifyAdmin, // ✅ PROTECT
+  deleteService
+);
 
 module.exports = router;

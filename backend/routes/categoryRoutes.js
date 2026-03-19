@@ -6,7 +6,12 @@ const {
   getCategories
 } = require("../controllers/categoryController");
 
-router.post("/", createCategory);
+const { verifyAdmin } = require("../middleware/authMiddleware"); // ✅
+
+// PUBLIC
 router.get("/", getCategories);
+
+// PROTECTED
+router.post("/", verifyAdmin, createCategory);
 
 module.exports = router;

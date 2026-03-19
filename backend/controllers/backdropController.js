@@ -1,50 +1,71 @@
 const Backdrop = require("../models/backdropModel");
 const cloudinary = require("../config/cloudinary");
 
-
-// GET all backdrops
+// GET
 exports.getBackdrops = async (req, res) => {
   try {
     const backdrops = await Backdrop.find().sort({ order: 1 });
-
     res.json(backdrops);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-
-// ADD backdrop
+// MULTIPLE UPLOAD
 exports.createBackdrop = async (req, res) => {
   try {
-    const backdrop = new Backdrop({
-      image: req.file.path,
-      public_id: req.file.filename
-    });
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ message: "No images uploaded" });
+    }
 
-    const saved = await backdrop.save();
+    const images = req.files.map((file) => ({
+      image: file.path,
+      public_id: file.filename,
+    }));
+
+    const saved = await Backdrop.insertMany(images);
 
     res.status(201).json(saved);
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-
-// DELETE backdrop
+// DELETE
 exports.deleteBackdrop = async (req, res) => {
   try {
-    const backdrop = await Backdrop.findById(req.params.id);
+    const item = await Backdrop.findById(req.params.id);
 
-    if (!backdrop) {
-      return res.status(404).json({ message: "Backdrop not found" });
+    if (!item) {
+      return res.status(404).json({ message: "Not found" });
     }
 
-    await cloudinary.uploader.destroy(backdrop.public_id);
+    await cloudinary.uploader.destroy(item.public_id);
+    await Backdrop.findByIdAndDelete(req.params.id);
 
-    await backdrop.deleteOne();
+    res.json({ message: "Deleted" });
 
-    res.json({ message: "Backdrop deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// REORDER
+exports.reorderBackdrop = async (req, res) => {
+  try {
+    const { items } = req.body;
+
+    const bulkOps = items.map((item) => ({
+      updateOne: {
+        filter: { _id: item.id },
+        update: { order: item.order },
+      },
+    }));
+
+    await Backdrop.bulkWrite(bulkOps);
+
+    res.json({ message: "Order updated" });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
