@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function WhatWeDo() {
   const services = [
@@ -94,9 +95,12 @@ export default function WhatWeDo() {
                   {service.desc}
                 </p> */}
 
-                <button className="w-max bg-white text-black px-5 py-2 rounded-full text-[11px] lg:text-[12px] font-semibold tracking-wide hover:bg-gray-200 hover:scale-105 active:scale-95 transition-all duration-300">
+                <Link 
+                  href="/portfolio"
+                  className="w-max bg-white text-black px-5 py-2 rounded-full text-[11px] lg:text-[12px] font-semibold tracking-wide hover:bg-gray-200 hover:scale-105 active:scale-95 transition-all duration-300"
+                >
                   See Shoots →
-                </button>
+                </Link>
               </div>
 
             </div>

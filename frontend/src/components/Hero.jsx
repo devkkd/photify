@@ -81,18 +81,6 @@ export default function Hero() {
         <button className="hero-next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-colors duration-300 pointer-events-auto">
           <FiChevronRight className="text-2xl pl-0.5" />
         </button>
-
-        {/* WhatsApp Button */}
-        <a
-          href="https://wa.me/YOUR_PHONE_NUMBER"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-8 right-6 md:right-10 z-30 bg-[#25D366] text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-lg hover:scale-105 transition-transform duration-300 pointer-events-auto"
-        >
-          <FaWhatsapp className="text-2xl" />
-          <span className="font-medium hidden sm:block">WhatsApp</span>
-        </a>
-
       </div>
 
       {/* ANIMATED CONTENT LAYER (Only Text & CTA move up) */}
@@ -110,9 +98,13 @@ export default function Hero() {
           Jaipur's Premier Multi-Functional Photography & Videography Studio
         </p>
 
-        <button className="pointer-events-auto bg-[#1D4F41] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full text-[15px] md:text-[16px] font-medium hover:scale-105 active:scale-95 transition-transform duration-300 shadow-lg">
+        <a
+          href="https://wa.me/YOUR_PHONE_NUMBER"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pointer-events-auto bg-[#1D4F41] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full text-[15px] md:text-[16px] font-medium hover:scale-105 active:scale-95 transition-transform duration-300 shadow-lg">
           Book Your Session
-        </button>
+        </a>
 
       </div>
 

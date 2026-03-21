@@ -135,9 +135,13 @@ export default function OurPackages() {
 
             {/* Right Col (Button) */}
             <div className="shrink-0">
-              <button className="bg-[#1D4F41] text-white px-8 py-4 text-[15px] font-medium rounded-full hover:scale-105 active:scale-95 transition-transform duration-300">
+              <a
+                href="https://wa.me/YOUR_PHONE_NUMBER"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#1D4F41] text-white px-8 py-4 text-[15px] font-medium rounded-full hover:scale-105 active:scale-95 transition-transform duration-300">
                 Book Your Session
-              </button>
+              </a>
             </div>
 
           </div>

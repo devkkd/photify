@@ -3,13 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { 
-  FiGrid, 
-  FiBriefcase, 
-  FiImage, 
-  FiFolder, 
-  FiCamera, 
-  FiPackage 
+import {
+  FiGrid,
+  FiBriefcase,
+  FiImage,
+  FiFolder,
+  FiCamera,
+  FiPackage,
+  FiUsers,
+  FiVideo
 } from "react-icons/fi";
 
 
@@ -23,18 +25,20 @@ export default function AdminSidebar() {
     { name: "Portfolio", href: "/admin/portfolio", icon: FiFolder },
     { name: "Backdrops", href: "/admin/backdrops", icon: FiCamera },
     { name: "Packages", href: "/admin/packages", icon: FiPackage },
+    { name: "Clients", href: "/admin/clientsInsta", icon: FiUsers },
+    { name: "Clients Videos", href: "/admin/clientsVideos", icon: FiVideo },
   ];
 
   return (
     <aside className="w-72 bg-[#1D4F41] text-white p-6 flex flex-col min-h-screen border-r border-[#163d34]">
-      
+
       {/* Logo */}
       <div className="mb-12 mx-auto flex items-center pl-2">
         <img
-          src="/images/logo.png" 
-          alt="Admin Logo" 
-          width={140} 
-          height={40} 
+          src="/images/logo.png"
+          alt="Admin Logo"
+          width={140}
+          height={40}
           className="h-10 w-auto object-contain"
           priority
         />
@@ -53,11 +57,10 @@ export default function AdminSidebar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out font-medium text-sm ${
-                isActive
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out font-medium text-sm ${isActive
                   ? "bg-white text-[#1D4F41] shadow-md transform scale-[1.02]"
                   : "text-gray-200 hover:bg-[#163d34] hover:text-white"
-              }`}
+                }`}
             >
               <Icon className={`w-5 h-5 ${isActive ? "text-[#1D4F41]" : "text-[#8ebaa9]"}`} />
               {link.name}

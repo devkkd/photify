@@ -92,9 +92,18 @@ export default function Footer() {
             {/* Bottom Right Corner Bracket (Updated to white) */}
             <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[2px] border-r-[2px] border-white pointer-events-none" />
             
-            {/* Empty Map Area */}
-            <div className="w-full h-full min-h-[250px] bg-white/10 flex items-center justify-center">
-               <span className="text-white/40 text-sm tracking-widest uppercase">Map Placeholder</span>
+            {/* Embedded Map Area */}
+            <div className="relative w-full h-full min-h-[250px] overflow-hidden">
+              <iframe 
+                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Plot%20No.%2059B,%20Sumer%20Nagar,%20Opp.%20St.%20Wilfred's%20College,%20New%20Sanganer%20Road,%20Mansarovar,%20Jaipur,%20Rajasthan+(Photify%20Studios)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full object-cover" 
+              />
             </div>
 
           </div>

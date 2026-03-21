@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 
@@ -65,9 +66,9 @@ export default function FAQSection() {
 
           {/* CTA Button */}
           <div className="mt-10">
-            <button className="bg-[#1D4F41] text-white px-8 py-4 rounded-full font-medium text-[15px] transition-transform hover:scale-105 active:scale-95">
+            <Link href="/faq"  className="bg-[#1D4F41] text-white px-8 py-4 rounded-full font-medium text-[15px] transition-transform hover:scale-105 active:scale-95">
               See All FAQ's
-            </button>
+            </Link>
           </div>
         </div>
 

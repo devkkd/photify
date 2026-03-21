@@ -41,3 +41,12 @@ export const updatePackage = (id, data) => API.put(`/packages/${id}`, data);
 export const deletePackage = (id) => API.delete(`/packages/${id}`);
 export const reorderPackages = (data) => API.put("/packages/reorder", data);
 
+export const getTestimonials = () => API.get("/testimonials");
+export const createTestimonial = (data) => API.post("/testimonials", data, { headers: { "Content-Type": "multipart/form-data" } });
+export const deleteTestimonial = (id) => API.delete(`/testimonials/${id}`);
+export const reorderTestimonials = (data) => API.put("/testimonials/reorder", data);
+
+export const getClientVideos = () => API.get("/client-videos");
+export const createClientVideo = (data) => API.post("/client-videos", data, { headers: { "Content-Type": "multipart/form-data" } });
+export const deleteClientVideo = (id) => API.delete(`/client-videos/${id}`);
+export const reorderClientVideos = (data) => API.put("/client-videos/reorder", data);

@@ -4,33 +4,39 @@ const cloudinary = require("../config/cloudinary");
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: "photify",
-    allowed_formats: ["jpg", "jpeg", "png", "webp"],
-    resource_type: "image"
-  }
+  params: async (req, file) => {
+    let resource_type = "image";
+
+    if (file.mimetype.startsWith("video")) {
+      resource_type = "video";
+    }
+
+    return {
+      folder: "photify",
+      resource_type,
+    };
+  },
 });
 
-// 🔒 FILE FILTER (extra safety)
+// 🔒 FILE FILTER (ALLOW IMAGE + VIDEO)
 const fileFilter = (req, file, cb) => {
   if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/webp"
+    file.mimetype.startsWith("image") ||
+    file.mimetype.startsWith("video")
   ) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed"), false);
-    }
+    cb(new Error("Only image and video files are allowed"), false);
+  }
 };
 
-// 🔒 LIMITS
+// 🔒 LIMITS (REALISTIC)
 const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 2 * 1024 * 1024 // 2MB max per file
-  }
+    fileSize: 50 * 1024 * 1024, // 50MB (adjust if needed)
+  },
 });
 
 module.exports = upload;

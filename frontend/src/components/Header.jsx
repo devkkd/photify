@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getServices } from "@/lib/api";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const [services, setServices] = useState([]);
@@ -14,18 +15,18 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false); // Toggle for mobile dropdown
 
-useEffect(() => {
-  const loadServices = async () => {
-    try {
-      const res = await getServices();
-      setServices(res.data);
-    } catch (err) {
-      console.error("Error fetching services:", err);
-    }
-  };
+  useEffect(() => {
+    const loadServices = async () => {
+      try {
+        const res = await getServices();
+        setServices(res.data);
+      } catch (err) {
+        console.error("Error fetching services:", err);
+      }
+    };
 
-  loadServices();
-}, []);
+    loadServices();
+  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -94,8 +95,8 @@ useEffect(() => {
                         key={service._id}
                         href={`/services/${service.slug}`}
                         className={`block px-5 py-3 text-[14px] transition-colors duration-200 ${isActive
-                            ? "bg-[#1D4F41] text-white"
-                            : "text-black hover:bg-[#1D4F41] hover:text-white"
+                          ? "bg-[#1D4F41] text-white"
+                          : "text-black hover:bg-[#1D4F41] hover:text-white"
                           }`}
                       >
                         {service.title}
@@ -117,12 +118,22 @@ useEffect(() => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button className="header-anim-item bg-[#111111] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-black transition-colors">
-              Visit Studio
-            </button>
-            <button className="header-anim-item bg-[#1D4F41] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-[#163e33] transition-colors">
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/YOUR_PHONE_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-anim-item bg-[#111111] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-black transition-colors flex items-center gap-2">
+              <FaWhatsapp className="text-xl" />
+              <span className="font-medium hidden sm:block">WhatsApp</span>
+            </a>
+            <a
+              href="https://wa.me/YOUR_PHONE_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-anim-item bg-[#1D4F41] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-black transition-colors flex items-center gap-2">
               Book Studio
-            </button>
+            </a>
           </div>
         </div>
 
@@ -193,8 +204,8 @@ useEffect(() => {
                         href={`/services/${service.slug}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`text-[16px] transition-colors ${isActive
-                            ? "text-[#1D4F41] font-semibold"
-                            : "text-gray-600 hover:text-[#1D4F41]"
+                          ? "text-[#1D4F41] font-semibold"
+                          : "text-gray-600 hover:text-[#1D4F41]"
                           }`}
                       >
                         {service.title}

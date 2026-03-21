@@ -24,7 +24,7 @@ export default function AdminHeader() {
       </h2>
 
       {/* Right */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 text-[#1D4F41]">
         <span className="text-sm text-gray-600">
           Admin
         </span>

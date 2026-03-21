@@ -15,6 +15,8 @@ const portfolioRoutes = require("./routes/portfolioRoutes");
 const backdropRoutes = require("./routes/backdropRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const serviceGalleryRoutes = require("./routes/serviceGalleryRoutes");
+const testimonialRoutes = require("./routes/testimonialRoutes");
+const clientVideoRoutes = require("./routes/clientVideoRoutes");
 
 const app = express();
 
@@ -49,6 +51,8 @@ app.use("/api/portfolio", portfolioRoutes);
 app.use("/api/backdrops", backdropRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/service-gallery", serviceGalleryRoutes);
+app.use("/api/testimonials", testimonialRoutes);
+app.use("/api/client-videos", clientVideoRoutes);
 
 // SERVER
 const PORT = process.env.PORT || 5000;

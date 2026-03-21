@@ -3,11 +3,11 @@ import React from 'react';
 export default function BrandsBanner() {
   // Base array of your brand image paths
   const baseBrands = [
-    "/images/brands/brand1.png",
-    "/images/brands/brand2.png",
+    "/images/brands/brand1.svg",
+    "/images/brands/brand2.svg",
     "/images/brands/brand3.png",
-    "/images/brands/brand4.png",
-    "/images/brands/brand5.png"
+    "/images/brands/brand4.svg",
+    "/images/brands/brand5.svg"
   ];
 
   // We triple the sequence to ensure the track is super wide,
