@@ -30,7 +30,7 @@ app.use(cookieParser());
 // ⚠️ CORS (THIS IS CRITICAL FOR AUTH)
 app.use(
   cors({
-    origin: "http://localhost:3000", // your frontend
+    origin: process.env.FRONTEND_URL, // your frontend
     credentials: true,
   })
 );
