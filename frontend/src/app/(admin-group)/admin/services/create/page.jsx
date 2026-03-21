@@ -71,7 +71,7 @@ export default function CreateServicePage() {
         if (!file) return false;
 
         const validTypes = ["image/jpeg", "image/png", "image/webp"];
-        const maxSize = 2 * 1024 * 1024; // 2MB
+        const maxSize = 10 * 1024 * 1024; // 10MB
 
         if (!validTypes.includes(file.type)) {
             alert("Only JPG, PNG, WEBP allowed");

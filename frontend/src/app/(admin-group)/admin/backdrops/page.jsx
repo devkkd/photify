@@ -9,11 +9,11 @@ import {
   reorderBackdrop,
   checkAuth // Imported checkAuth
 } from "@/lib/api";
-import { 
-  FiUploadCloud, 
-  FiTrash2, 
-  FiImage, 
-  FiX, 
+import {
+  FiUploadCloud,
+  FiTrash2,
+  FiImage,
+  FiX,
   FiGrid,
   FiLoader // Imported loader icon
 } from "react-icons/fi";
@@ -63,7 +63,7 @@ export default function BackdropPage() {
   // ================= VALIDATION =================
   const validateFile = (file) => {
     const validTypes = ["image/jpeg", "image/png", "image/webp"];
-    const maxSize = 2 * 1024 * 1024; // 2MB
+    const maxSize = 10 * 1024 * 1024; // 10MB
 
     if (!validTypes.includes(file.type)) {
       alert(`${file.name} is not a valid format (JPG, PNG, WEBP)`);
@@ -186,7 +186,7 @@ export default function BackdropPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-6 text-gray-800 pb-20">
-      
+
       {/* HEADER */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Backdrop Manager</h1>
@@ -194,7 +194,7 @@ export default function BackdropPage() {
       </div>
 
       <div className="space-y-8">
-        
+
         {/* UPLOAD SECTION */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
           <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -202,13 +202,13 @@ export default function BackdropPage() {
           </h2>
 
           {/* DRAG ZONE */}
-          <label 
+          <label
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleDrop}
             className="block border-2 border-dashed border-gray-300 rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 hover:border-[#1D4F41]/50 transition-all group mb-4"
           >
             <div className="w-14 h-14 bg-gray-100 text-gray-400 group-hover:bg-[#1D4F41]/10 group-hover:text-[#1D4F41] rounded-full flex items-center justify-center mb-3 transition-colors">
-               <FiUploadCloud className="w-6 h-6" />
+              <FiUploadCloud className="w-6 h-6" />
             </div>
             <span className="text-base font-medium text-gray-700 mb-1">Drag & Drop Images Here</span>
             <span className="text-sm text-gray-500">or click to browse files (JPG, PNG, WEBP)</span>
@@ -219,8 +219,8 @@ export default function BackdropPage() {
           {previews.length > 0 && (
             <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
               <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-medium text-gray-700">Files ready to upload ({files.length})</h3>
-                  {uploadProgress > 0 && <span className="text-sm font-bold text-[#1D4F41]">{uploadProgress}%</span>}
+                <h3 className="text-sm font-medium text-gray-700">Files ready to upload ({files.length})</h3>
+                {uploadProgress > 0 && <span className="text-sm font-bold text-[#1D4F41]">{uploadProgress}%</span>}
               </div>
 
               {/* Progress Bar */}
@@ -235,8 +235,8 @@ export default function BackdropPage() {
                   <div key={i} className="relative group rounded-lg overflow-hidden border border-gray-200 aspect-square bg-white shadow-sm">
                     <img src={src} className="w-full h-full object-cover" alt="upload preview" />
                     {!uploadProgress && (
-                      <button 
-                        onClick={() => removeFile(i)} 
+                      <button
+                        onClick={() => removeFile(i)}
                         className="absolute top-1 right-1 bg-red-500/90 text-white p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
                       >
                         <FiX className="w-3 h-3" />
@@ -261,8 +261,8 @@ export default function BackdropPage() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
             <h2 className="text-lg font-semibold flex items-center gap-2">
-               <FiGrid className="text-[#1D4F41]" /> Current Backdrops
-               <span className="text-sm font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full ml-2">{items.length} Images</span>
+              <FiGrid className="text-[#1D4F41]" /> Current Backdrops
+              <span className="text-sm font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full ml-2">{items.length} Images</span>
             </h2>
 
             {/* Bulk Actions */}
@@ -283,9 +283,9 @@ export default function BackdropPage() {
 
           {items.length === 0 ? (
             <div className="text-center py-12 px-4 bg-gray-50 rounded-xl border border-dashed border-gray-200">
-                <FiImage className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                <h3 className="text-gray-900 font-medium">No backdrops found</h3>
-                <p className="text-gray-500 text-sm mt-1">Upload some images above to add to your backdrop collection.</p>
+              <FiImage className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <h3 className="text-gray-900 font-medium">No backdrops found</h3>
+              <p className="text-gray-500 text-sm mt-1">Upload some images above to add to your backdrop collection.</p>
             </div>
           ) : (
             <>
@@ -308,21 +308,21 @@ export default function BackdropPage() {
 
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-2">
-                      
+
                       {/* Checkbox */}
                       <label className="cursor-pointer self-start p-1 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded transition-colors">
-                         <input
-                           type="checkbox"
-                           className="w-4 h-4 accent-[#1D4F41] cursor-pointer"
-                           checked={selected.includes(item._id)}
-                           onChange={(e) => {
-                             if (e.target.checked) {
-                               setSelected([...selected, item._id]);
-                             } else {
-                               setSelected(selected.filter((id) => id !== item._id));
-                             }
-                           }}
-                         />
+                        <input
+                          type="checkbox"
+                          className="w-4 h-4 accent-[#1D4F41] cursor-pointer"
+                          checked={selected.includes(item._id)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelected([...selected, item._id]);
+                            } else {
+                              setSelected(selected.filter((id) => id !== item._id));
+                            }
+                          }}
+                        />
                       </label>
 
                       {/* Delete Button */}
