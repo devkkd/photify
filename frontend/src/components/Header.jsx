@@ -21,7 +21,7 @@ export default function Header() {
         const res = await getServices();
         setServices(res.data);
       } catch (err) {
-        console.error("Error fetching services:", err);
+        console.error("Error services:", err);
       }
     };
 
