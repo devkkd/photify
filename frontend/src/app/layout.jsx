@@ -14,11 +14,18 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Photify Studios",
   description: "Creative Studio",
+  icons: {
+    icon: "/images/favicon.png",
+    apple: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/favicon.png" type="image/png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
