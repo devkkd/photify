@@ -120,7 +120,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/YOUR_PHONE_NUMBER"
+              href="https://wa.me/919784562130"
               target="_blank"
               rel="noopener noreferrer"
               className="header-anim-item bg-[#111111] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-black transition-colors flex items-center gap-2">
@@ -128,7 +128,7 @@ export default function Header() {
               <span className="font-medium hidden sm:block">WhatsApp</span>
             </a>
             <a
-              href="https://wa.me/YOUR_PHONE_NUMBER"
+              href="https://wa.me/919784562130"
               target="_blank"
               rel="noopener noreferrer"
               className="header-anim-item bg-[#1D4F41] text-white text-[12px] xl:text-[13px] px-4 py-2 rounded-full font-medium hover:bg-black transition-colors flex items-center gap-2">
